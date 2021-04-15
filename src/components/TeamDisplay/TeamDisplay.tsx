@@ -11,7 +11,7 @@ export const TeamDisplay: React.FC<TeamDisplayProps> = ({
 }: TeamDisplayProps) => {
   return (
     <Box
-      width={{ base: "full", md: "25%" }}
+      width={{ base: "full", md: "25%", lg: "min" }}
       height="full"
       paddingX={{ lg: "4rem" }}
       paddingY="2rem"

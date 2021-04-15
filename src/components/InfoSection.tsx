@@ -17,6 +17,7 @@ export const InfoSection: React.FC = () => {
       <Heading
         as="h3"
         fontSize="1.25rem"
+        marginBottom={{ base: "1rem", lg: "1.5rem" }}
         textColor="navy"
         textAlign={{ base: "center", lg: "start" }}
       >

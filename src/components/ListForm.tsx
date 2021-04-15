@@ -1,20 +1,30 @@
 import {
   Box,
   Button,
+  chakra,
   Checkbox,
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
+  HTMLChakraProps,
   Input,
 } from "@chakra-ui/react";
 import { Formik, Form, Field, FieldProps } from "formik";
+import { HTMLMotionProps, motion } from "framer-motion";
 import React from "react";
 import * as Yup from "yup";
 
 interface ListFormProps {
   sendName(name: string): void;
 }
+
+type Merge<P, T> = Omit<P, keyof T> & T;
+type MotionButtonProps = Merge<
+  HTMLChakraProps<"button">,
+  HTMLMotionProps<"button">
+>;
+export const MotionButton: React.FC<MotionButtonProps> = motion(Button);
 
 export const ListForm: React.FC<ListFormProps> = ({
   sendName,
@@ -55,6 +65,7 @@ export const ListForm: React.FC<ListFormProps> = ({
                     type="text"
                     name="name"
                     placeholder="Name"
+                    borderColor="blackAlpha.500"
                   />
                   <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                 </FormControl>
@@ -74,6 +85,7 @@ export const ListForm: React.FC<ListFormProps> = ({
                     type="email"
                     name="email"
                     placeholder="Email"
+                    borderColor="blackAlpha.500"
                   />
                   <FormErrorMessage>{form.errors.email}</FormErrorMessage>
                 </FormControl>
@@ -84,7 +96,7 @@ export const ListForm: React.FC<ListFormProps> = ({
               {({ field, form }: FieldProps) => (
                 <FormControl
                   isInvalid={!!(form.errors.terms && form.touched.terms)}
-                  marginBottom={{ md: "0.5rem" }}
+                  marginBottom={{ md: "1.75rem" }}
                   marginX="auto"
                   width={{ base: "75%", md: "100%" }}
                 >
@@ -112,15 +124,29 @@ export const ListForm: React.FC<ListFormProps> = ({
               )}
             </Field>
             <Flex justifyContent={{ base: "center", md: "start" }}>
-              <Button
+              {/* <motion.div whileHover={{ scale: 1.1 }}> */}
+              {/* <Button
                 type="submit"
                 background="#357edd"
                 color="white"
+                _hover={{ background: "#357edd" }}
                 paddingX="2rem"
                 marginBottom="2rem"
               >
                 I'm in, sign me up!
-              </Button>
+              </Button> */}
+              <MotionButton
+                type="submit"
+                background="#357edd"
+                color="white"
+                _hover={{ background: "#357edd" }}
+                paddingX="2rem"
+                marginBottom="2rem"
+                whileHover={{ scale: 1.05 }}
+              >
+                I'm in, sign me up!
+              </MotionButton>
+              {/* </motion.div> */}
             </Flex>
           </Form>
         )}
