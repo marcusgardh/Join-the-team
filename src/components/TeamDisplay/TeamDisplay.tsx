@@ -25,12 +25,14 @@ export const TeamDisplay: React.FC<TeamDisplayProps> = ({
         marginY="0.67em"
         textAlign={{ base: "center", lg: "start" }}
       >
-        <Flex direction="column">
-          <Box as="span">Join</Box> <Box as="span">the</Box>{" "}
-          <Box as="span">team</Box>
+        <Flex direction={{ base: "row", md: "column" }} justifyContent="center">
+          <Box>
+            <Box as="span">Join</Box> <Box as="span">the</Box>{" "}
+            <Box as="span">team</Box>
+          </Box>
         </Flex>
       </Heading>
-      <UnorderedList fontSize="1rem" width="full">
+      <UnorderedList fontSize="1rem" width="full" maxWidth="95vw">
         <Flex direction="column" alignItems={{ base: "center", lg: "start" }}>
           <Box>
             {list.map((item, index) => (

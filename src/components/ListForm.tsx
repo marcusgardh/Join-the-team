@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Checkbox,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
@@ -46,6 +47,8 @@ export const ListForm: React.FC<ListFormProps> = ({
                 <FormControl
                   isInvalid={!!(form.errors.name && form.touched.name)}
                   marginY="0.5rem"
+                  marginX="auto"
+                  width={{ base: "75%", md: "100%" }}
                 >
                   <Input
                     {...field}
@@ -63,6 +66,8 @@ export const ListForm: React.FC<ListFormProps> = ({
                 <FormControl
                   isInvalid={!!(form.errors.email && form.touched.email)}
                   marginBottom="0.5rem"
+                  marginX="auto"
+                  width={{ base: "75%", md: "100%" }}
                 >
                   <Input
                     {...field}
@@ -79,34 +84,44 @@ export const ListForm: React.FC<ListFormProps> = ({
               {({ field, form }: FieldProps) => (
                 <FormControl
                   isInvalid={!!(form.errors.terms && form.touched.terms)}
-                  marginBottom="0.5rem"
+                  marginBottom={{ md: "0.5rem" }}
+                  marginX="auto"
+                  width={{ base: "75%", md: "100%" }}
                 >
-                  <Box display="flex" justifyContent="space-between">
+                  <Flex justifyContent="space-between" alignItems="flex-start">
                     <Checkbox
                       {...field}
                       name="terms"
                       checked={field.value}
                       marginRight="0.5rem"
+                      marginTop="0.25rem"
                     />
-                    <FormLabel htmlFor="terms" margin="0" fontWeight="normal">
+                    <FormLabel
+                      htmlFor="terms"
+                      marginY="auto"
+                      fontWeight="normal"
+                    >
                       I agree to the terms{" "}
                       <Box as="span" textColor="white">
                         and I bring nice fika when corona is over ;)
                       </Box>
                     </FormLabel>
-                  </Box>
+                  </Flex>
                   <FormErrorMessage>{form.errors.terms}</FormErrorMessage>
                 </FormControl>
               )}
             </Field>
-            <Button
-              type="submit"
-              background="#357edd"
-              color="white"
-              paddingX="2rem"
-            >
-              I'm in, sign me up!
-            </Button>
+            <Flex justifyContent={{ base: "center", md: "start" }}>
+              <Button
+                type="submit"
+                background="#357edd"
+                color="white"
+                paddingX="2rem"
+                marginBottom="2rem"
+              >
+                I'm in, sign me up!
+              </Button>
+            </Flex>
           </Form>
         )}
       </Formik>
