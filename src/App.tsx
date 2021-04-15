@@ -1,11 +1,12 @@
-import { Flex } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "./App.css";
-import TeamDisplay from "./components/TeamDisplay";
+import TeamDisplay from "./components/TeamDisplay/TeamDisplay";
+import InfoSection from "./components/InfoSection";
+import ListForm from "./components/ListForm";
 
 function App() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState([""]);
 
   useEffect(() => {
     axios
@@ -13,9 +14,17 @@ function App() {
       .then((res) => setList(res.data.team));
   }, []);
 
+  function addName(name: string) {
+    setList([...list, name]);
+  }
+
   return (
     <Flex height="100vh" align="center">
       <TeamDisplay list={list} />
+      <Box paddingLeft="4rem">
+        <InfoSection />
+        <ListForm sendName={addName} />
+      </Box>
     </Flex>
   );
 }
