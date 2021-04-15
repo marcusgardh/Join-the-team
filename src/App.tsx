@@ -25,7 +25,11 @@ function App() {
       direction={{ base: "column", md: "row" }}
     >
       <TeamDisplay list={list} />
-      <Box paddingLeft="4rem">
+      <Box
+        paddingLeft={{ md: "2rem", lg: "4rem" }}
+        display={{ base: "flex", lg: "block" }}
+        flexDirection={{ base: "column" }}
+      >
         <InfoSection />
         <ListForm sendName={addName} />
       </Box>
