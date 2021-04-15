@@ -16,6 +16,7 @@ export const TeamDisplay: React.FC<TeamDisplayProps> = ({
       paddingY="2rem"
       textColor="white"
       className="bg-cogs"
+      overflow="auto"
     >
       <Heading as="h1" fontSize="3rem" marginY="0.67em">
         <Flex direction="column">
@@ -23,7 +24,11 @@ export const TeamDisplay: React.FC<TeamDisplayProps> = ({
           <Box as="span">team</Box>
         </Flex>
       </Heading>
-      <UnorderedList fontSize="1rem">
+      <UnorderedList
+        fontSize="1rem"
+        width="full"
+        // maxHeight="40vh"
+      >
         {list.map((item, index) => (
           <ListItem key={index}>{item}</ListItem>
         ))}
