@@ -11,27 +11,33 @@ export const TeamDisplay: React.FC<TeamDisplayProps> = ({
 }: TeamDisplayProps) => {
   return (
     <Box
+      width={{ base: "full", md: "25%" }}
       height="full"
-      paddingX="4rem"
+      paddingX={{ lg: "4rem" }}
       paddingY="2rem"
       textColor="white"
       className="bg-cogs"
-      overflow="auto"
+      overflow={{ lg: "auto" }}
     >
-      <Heading as="h1" fontSize="3rem" marginY="0.67em">
+      <Heading
+        as="h1"
+        fontSize="3rem"
+        marginY="0.67em"
+        textAlign={{ base: "center", lg: "start" }}
+      >
         <Flex direction="column">
           <Box as="span">Join</Box> <Box as="span">the</Box>{" "}
           <Box as="span">team</Box>
         </Flex>
       </Heading>
-      <UnorderedList
-        fontSize="1rem"
-        width="full"
-        // maxHeight="40vh"
-      >
-        {list.map((item, index) => (
-          <ListItem key={index}>{item}</ListItem>
-        ))}
+      <UnorderedList fontSize="1rem" width="full">
+        <Flex direction="column" alignItems={{ base: "center", lg: "start" }}>
+          <Box>
+            {list.map((item, index) => (
+              <ListItem key={index}>{item}</ListItem>
+            ))}
+          </Box>
+        </Flex>
       </UnorderedList>
     </Box>
   );

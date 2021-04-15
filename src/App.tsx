@@ -19,7 +19,11 @@ function App() {
   }
 
   return (
-    <Flex height="100vh" align="center">
+    <Flex
+      height="100vh"
+      align="center"
+      direction={{ base: "column", md: "row" }}
+    >
       <TeamDisplay list={list} />
       <Box paddingLeft="4rem">
         <InfoSection />
